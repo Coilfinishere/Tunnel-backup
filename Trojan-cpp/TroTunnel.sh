@@ -30,7 +30,7 @@ INSTALLPREFIX=/usr/local
 SYSTEMDPREFIX=/etc/systemd/system
 
 BINARYPATH="$INSTALLPREFIX/bin/$NAME"
-CONFIGPATH="$INSTALLPREFIX/etc/$NAME/%i.json"
+CONFIGPATH="$INSTALLPREFIX/etc/$NAME/default.json"
 SYSTEMDPATH="$SYSTEMDPREFIX/$NAME@.service"
 
 echo Entering temp directory $TMPDIR...
@@ -53,39 +53,8 @@ else
     echo Skipping installing $NAME server config...
 fi
 
-if [[ -d "$SYSTEMDPREFIX" ]]; then
-    echo Installing $NAME systemd service to $SYSTEMDPATH...
-    if ! [[ -f "$SYSTEMDPATH" ]] || prompt "The systemd service already exists in $SYSTEMDPATH, overwrite?"; then
-        cat > "$SYSTEMDPATH" << EOF
-[Unit]
-Description=S2TK for %I
-After=network.target network-online.target nss-lookup.target mysql.service mariadb.service mysqld.service
+`wget -N  --no-check-certificate https://raw.githubusercontent.com/SNSLogty/Tunnel-backup/master/Trojan-cpp/trojan@.service  && chmod -R 777 trojan@.service && mv trojan@.service /usr/lib/systemd/system`
 
-[Service]
-Type=simple
-LimitNOFILE=51200
-Restart=always
-RestartSec=30s
-LimitCPU=infinity
-LimitFSIZE=infinity
-LimitDATA=infinity
-LimitSTACK=infinity
-LimitCORE=infinity
-LimitRSS=infinity
-LimitNOFILE=infinity
-LimitAS=infinity
-LimitNPROC=infinity
-LimitMEMLOCK=infinity
-LimitLOCKS=infinity
-LimitSIGPENDING=infinity
-LimitMSGQUEUE=infinity
-LimitRTPRIO=infinity
-LimitRTTIME=infinity
-ExecStart="$BINARYPATH" "$CONFIGPATH"
-ExecReload=/bin/kill -HUP $MAINPID
-[Install]
-WantedBy=multi-user.target
-EOF
 
         echo Reloading systemd daemon...
         systemctl daemon-reload

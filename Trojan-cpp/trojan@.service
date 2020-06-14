@@ -1,0 +1,28 @@
+[Unit]
+Description=S2TK for %I
+After=network.target network-online.target nss-lookup.target mysql.service mariadb.service mysqld.service
+
+[Service]
+Type=simple
+LimitNOFILE=51200
+Restart=always
+RestartSec=30s
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitSTACK=infinity
+LimitCORE=infinity
+LimitRSS=infinity
+LimitNOFILE=infinity
+LimitAS=infinity
+LimitNPROC=infinity
+LimitMEMLOCK=infinity
+LimitLOCKS=infinity
+LimitSIGPENDING=infinity
+LimitMSGQUEUE=infinity
+LimitRTPRIO=infinity
+LimitRTTIME=infinity
+ExecStart=/usr/local/bin/trojan  /etc/trojan/%i.json
+ExecReload=/bin/kill -HUP $MAINPID
+[Install]
+WantedBy=multi-user.target
