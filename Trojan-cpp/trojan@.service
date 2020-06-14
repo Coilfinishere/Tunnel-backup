@@ -22,7 +22,7 @@ LimitSIGPENDING=infinity
 LimitMSGQUEUE=infinity
 LimitRTPRIO=infinity
 LimitRTTIME=infinity
-ExecStart=/usr/local/bin/trojan  /etc/trojan/%i.json
+ExecStart=/usr/local/bin/trojan  /usr/local/etc/trojan/%i.json
 ExecReload=/bin/kill -HUP $MAINPID
 [Install]
 WantedBy=multi-user.target
