@@ -55,7 +55,7 @@ fi
 
 `wget -N  --no-check-certificate https://raw.githubusercontent.com/SNSLogty/Tunnel-backup/master/Trojan-cpp/trojan@.service  && chmod -R 777 trojan@.service && mv trojan@.service /usr/lib/systemd/system`
 
-
+	if
         echo Reloading systemd daemon...
         systemctl daemon-reload
     else
