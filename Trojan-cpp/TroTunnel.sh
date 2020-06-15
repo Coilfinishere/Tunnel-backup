@@ -74,19 +74,25 @@ rm -rf "$TMPDIR"
 echo Done!
 }
 
+Uninstall_ct(){
+             `rm -rf /usr/local/bin/trojan`
+             `rm -rf /usr/lib/systemd/trojan@.service`
+             `rm -rf /usr/local/etc/trojan`
+             
+             echo "${Red_font_prefix}tj已经成功删除${Font_color_suffix}"
+}
+
+
+
 echo && echo -e "  trojan 一键管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   ---- CLIENT BY sncat    ----
   ---- 2020/6-------------
   
  ${Green_font_prefix}1.${Font_color_suffix} 安装 trojan
- ${Green_font_prefix}2.${Font_color_suffix} 卸载 trojan[没写]
+ ${Green_font_prefix}2.${Font_color_suffix} 卸载 trojan
 ————————————
- ${Green_font_prefix}3.${Font_color_suffix} 启动 trojan[没写]
- ${Green_font_prefix}4.${Font_color_suffix} 停止 trojan[没写]
- ${Green_font_prefix}5.${Font_color_suffix} 重启 trojan[没写]
-————————————
- ${Green_font_prefix}6.${Font_color_suffix} 设置 trojan中转端[没写]
- ${Green_font_prefix}7.${Font_color_suffix} 设置 trojan客户端[没写]
+ ${Green_font_prefix}3.${Font_color_suffix} 设置 trojan中转端[没写]
+ ${Green_font_prefix}4.${Font_color_suffix} 设置 trojan客户端[没写]
 ————————————" && echo
 read -e -p " 请输入数字 [1-7]:" num
 case "$num" in
@@ -97,19 +103,10 @@ case "$num" in
 	Uninstall_ct
 	;;
 	3)
-	Start_ct
+	openfile_rr
 	;;
 	4)
-	Stop_ct
-	;;
-	5)
-	Restart_ct
-	;;
-	6)
-	WEBSOCKET_M
-	;;
-	7)
-	ADDCILENT_ct
+	openfile_rr1
 	;;	
 	*)
 	echo "请输入正确数字 [1-5]"
