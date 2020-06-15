@@ -57,11 +57,13 @@ echo Installing $NAME $VERSION to $BINARYPATH...
 install -Dm755 "$NAME" "$BINARYPATH"
 
 echo Installing $NAME server config to $CONFIGPATH...
-if ! [[ -f "$CONFIGPATH" ]] || prompt "The server config already exists in $CONFIGPATH, overwrite?"; then
+if ! [[ -f "$CONFIGPATH" ]] || prompt "覆盖原有配置？ $CONFIGPATH"; then
     install -Dm644 examples/server.json-example "$CONFIGPATH"
 else
     echo Skipping installing $NAME server config...
 fi
+
+`rm -rf /usr/lib/systemd/trojan@.service`
 `wget -N  --no-check-certificate https://raw.githubusercontent.com/SNSLogty/Tunnel-backup/master/Trojan-cpp/trojan@.service  && chmod -R 777 trojan@.service && mv trojan@.service /usr/lib/systemd/system`
 
 echo Reloading systemd daemon...
@@ -88,8 +90,8 @@ echo && echo -e "  trojan 一键管理脚本 ${Red_font_prefix}[v${sh_ver}]${Fon
   ---- CLIENT BY sncat    ----
   ---- 2020/6-------------
   
- ${Green_font_prefix}1.${Font_color_suffix} 安装 trojan
- ${Green_font_prefix}2.${Font_color_suffix} 卸载 trojan
+ ${Green_font_prefix}1.${Font_color_suffix} 安装/更新 trojan
+ ${Green_font_prefix}2.${Font_color_suffix} 完全卸载 trojan,包括配置文件
 ————————————
  ${Green_font_prefix}3.${Font_color_suffix} 设置 trojan中转端[没写]
  ${Green_font_prefix}4.${Font_color_suffix} 设置 trojan客户端[没写]
