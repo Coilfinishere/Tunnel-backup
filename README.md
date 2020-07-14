@@ -6,9 +6,9 @@ TG [@sncat_contact_bot](https://t.me/sncat_contact_bot)
 当前进度
 -------------------------------
 
-GOST √（源作者fiish）
+GOST √（源作者fiish）[readme](https://www.fiisi.com/?p=125)
 
-Trojan C++ √（基于大火酱）
+Trojan C++ √（基于大火酱） [readme](https://github.com/SNSLogty/Tunnel-backup/tree/master/Trojan-cpp)
 
 Trojna go X 咕咕咕  暂时没时间
 
