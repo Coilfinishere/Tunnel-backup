@@ -12,6 +12,6 @@ Trojan C++ √（基于大火酱） [readme](https://github.com/SNSLogty/Tunnel-
 
 Trojna go X 咕咕咕  暂时没时间
 
-vnet 重启保存配置补丁 X 咕咕咕 已经有思路，没时间
+vnet 重启保存配置补丁 √ 【不免费开放，请私tg】
 
 v2ray隧道脚本不写，v2ray是垃圾
