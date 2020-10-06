@@ -1,5 +1,5 @@
 [Unit]
-Description=gost
+Description=gost for config-%I
 After=network-online.target
 Wants=network-online.target systemd-networkd-wait-online.service
 
@@ -21,7 +21,7 @@ LimitRTPRIO=infinity
 LimitRTTIME=infinity
 Type=simple
 DynamicUser=true
-ExecStart=/usr/bin/gost -C /etc/gost/config.json
+ExecStart=/usr/bin/gost -C /etc/gost/%i.json
 
 [Install]
 WantedBy=multi-user.target
